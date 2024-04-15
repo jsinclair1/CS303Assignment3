@@ -1,60 +1,58 @@
-#include <iostream>
-#include "linkedlist.h"
-#include "stack.h"
-using namespace std;
+#include "queue.h"
+#include "functions.h"
+
 
 int main() {
-  
-  Linked list;
-  //Insert nums in list
-  list.push_back(3);
-  list.push_front(2);
-  list.push_back(4);
-  list.push_front(1);
-  cout << "My linked list: " << endl;
-  list.print();
-  
-  list.pop_back();
-  cout << endl << "After pop_back: ";
-  list.print();
+  Queue<int> integers;
+
+  for (int i = 1; i <= 10; i++){
+    integers.push(i*10);
+  }
+ 
+  integers.print();
   cout << endl;
-
-  cout << "Head: " << list.front()->data << endl;
-  cout << "Tail: " << list.back()->data << endl;
   
-  list.pop_front();
-  cout << endl << "After pop_front: ";
-  list.print();
-
-  cout << endl;
-  //list.insert(1, 10);
-  //list.print();
-  list.remove(3);
-  cout << endl;
-
-  int num = 100;
-  list.push_back(num);
-  list.print();
-  cout << endl << "Number: " << num << " is at index " << list.find(100);
-
-
-  Stacked stack;
-  cout << endl << endl << "My stack: " << endl;
+  cout << "Size: " << integers.size() << endl;
+  cout << "Front: " << integers.front() << endl;
   
-  stack.insert(16);
-  stack.insert(5);
-  stack.insert(3);
-  stack.insert(40);
-  stack.print();
-  cout << endl;
-  cout << "Top: " << stack.get_top();
-  stack.remove();
-  cout << endl;
-  cout << "Top after removal: " << stack.get_top() << endl;
-  stack.print();
-
-  cout << endl << "Average: " << stack.get_average() << endl;
-  cout << stack.is_empty() << endl;
   
+  integers.move_to_rear();
+  cout << endl;
+  integers.print();
+  cout << endl << "New Front: " << integers.front() << endl;
+   //cout << "Empty? " << (integers.empty() ? "Yeah!" : "Nah!") << endl;
+  
+
+
+  vector<string> names = {"Jaylen", "Sydney", "Jayden", "Kai", "Sydney", "Charla", "Sydney"};
+  cout << "Names List: ";
+  for (auto i : names) {
+    cout << i << " ";
+  }
+  
+  string targeted = "Sydney";
+  int a = linear_search(names, targeted, names.size());
+  
+  cout << endl << "The name: " << targeted << " was found at index: " << a << endl;
+  
+   /*
+  vector<int> nums = {8,5,4,6,2,9,3};
+  insertion_sort(nums);
+  
+  for (int i = 0; i < nums.size(); i++){
+    cout << nums[i] << " ";
+  }
+ 
+  Queue<int> ordered;
+  ordered.push(5);
+  ordered.push(3);
+  ordered.push(1);
+  ordered.push(8);
+  ordered.push(4);
+  ordered.print();
+  ordered.insertion_sort();
+  cout << endl;
+  ordered.print();*/
   return 0;
+  
 }
